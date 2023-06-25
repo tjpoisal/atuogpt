@@ -1,2 +1,2 @@
-# atuogpt
+# autogpt
 python auto gpt idea
