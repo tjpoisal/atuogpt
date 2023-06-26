@@ -1,0 +1,35 @@
+import openai
+
+# Set up OpenAI API credentials
+openai.api_key = 'YOUR_API_KEY'
+
+# Define the initial prompt to start the conversation
+prompt = "User: Hello, ChatGPT!"
+
+# Create a loop for ChatGPT interaction
+while True:
+    # Get the model's response to the user prompt
+    response = openai.Completion.create(
+        engine='text-davinci-003',
+        prompt=prompt,
+        max_tokens=50,
+        temperature=0.7,
+        n=1,
+        stop=None,
+        temperature=0.7
+    )
+
+    # Extract the generated message from the response
+    message = response.choices[0].text.strip()
+
+    # Print the message from ChatGPT
+    print("ChatGPT:", message)
+
+    # Get the user's next input
+    user_input = input("User: ")
+
+    # Add the user's input to the prompt
+    prompt += "\nUser: " + user_input
+
+    # Add the user's input and ChatGPT's response to the prompt
+    prompt += "\nChatGPT: " + message
